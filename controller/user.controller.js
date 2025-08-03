@@ -94,7 +94,8 @@ const getUserData = async (req, res) => {
 
         const data = await jwt.verify(token, "hello")
         console.log(data);
-
+        const user = await User.findById(data.id)
+        res.json(user)
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
