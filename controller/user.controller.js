@@ -90,6 +90,7 @@ const loginUser = async (req, res) => {
 };
 const getUserData = async (req, res) => {
     try {
+        console.log(req.body);
         const { token } = req.body
 
         const data = await jwt.verify(token, "hello")
