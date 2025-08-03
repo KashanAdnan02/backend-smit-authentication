@@ -88,12 +88,23 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+const getUserData = async (req, res) => {
+    try {
+        const { token } = req.body
 
+        const data = await jwt.verify(token, "hello")
+        console.log(data);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 module.exports = {
     createUser,
     getAllUsers,
     getUserById,
     updateUser,
     deleteUser,
-    loginUser
+    loginUser,
+    getUserData
 };
